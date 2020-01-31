@@ -20,12 +20,12 @@ const getData = async function()
 (async function () {
     try{
         const people = await getData();
-        
+        var d = new Date();
         const slackBody = {
             mkdwn: true,
             test: `Jenkins`,
-            color: 'red',
-            text: `*Your Pipeline Failed* `,
+            color: 'danger',
+            text: `The submitted *pipeline failed* at ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}  ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
             
             // attachments: people.map(person => ({
             //     color: 'good',
