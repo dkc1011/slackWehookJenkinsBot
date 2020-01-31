@@ -1,21 +1,5 @@
 const request = require('request-promise');
-
-const hook = 'TTB5LAL8M/BT2KMENQZ/epiLd86cg9CIGNKvJO54CdaJ';
-
-const getData = async function()
-{
-    const json = await request( { 
-        url: 'https://next.json-generator.com/api/json/get/Eys6SRn-_',
-        json: true
-    });
-    return json.map(person => ({
-        age: person.age,
-        email: person.email,
-        firstName: person.name.first,
-        lastName: person.name.last
-
-    }))
-};
+const hook = 'TTB5LAL8M/BT2KMENQZ/epiLd86cg9CIGNKvJO54CdaJ'
 
 (async function () {
     try{
@@ -26,11 +10,6 @@ const getData = async function()
             test: `Jenkins`,
             color: 'danger',
             text: `The submitted *pipeline failed* at ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}  ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
-            
-            // attachments: people.map(person => ({
-            //     color: 'good',
-            //     text: `*${person.firstName} ${person.lastName}* is looking to go for pints. Contact them at ${person.email}`,
-            // }))
         };
 
         //slackpost
@@ -41,12 +20,8 @@ const getData = async function()
             json : true
         });
 
-        console.log(res);
-
     } catch(e)
     {
         console.log('error', e);
     }
-
-    debugger;
 })();
